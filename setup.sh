@@ -176,11 +176,22 @@ EOF
         sudo -u "$APP_USER" python3 -m venv "$venv_dir"
     fi
 
+    info "Upgrading pip..."
     sudo -u "$APP_USER" "$venv_dir/bin/pip" install --upgrade pip -q
 
     if [[ -f "$APP_DIR/requirements.txt" ]]; then
-        info "Installing Python dependencies..."
-        sudo -u "$APP_USER" "$venv_dir/bin/pip" install -r "$APP_DIR/requirements.txt" -q
+        info "Installing Python dependencies (this may take 10-20 minutes on RPi Zero)..."
+        local total
+        total=$(grep -cve '^\s*$\|^\s*#' "$APP_DIR/requirements.txt" 2>/dev/null || echo "?")
+        local count=0
+        while IFS= read -r line; do
+            # Skip empty lines and comments
+            [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
+            count=$((count + 1))
+            local pkg="${line%%[>=<]*}"
+            info "  [$count/$total] Installing $pkg..."
+            sudo -u "$APP_USER" "$venv_dir/bin/pip" install "$line" -q 2>&1 | tee -a "$LOG_FILE" || true
+        done < "$APP_DIR/requirements.txt"
     fi
 
     ok "Python environment ready"
