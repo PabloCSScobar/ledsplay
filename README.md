@@ -148,9 +148,9 @@ In the web interface, go to **System > WiFi** to scan and connect to your own ne
 
 - Downloads the latest release from GitHub
 - Installs system dependencies (Python 3, GPIO libraries, MIDI tools)
-- Sets up a Python virtual environment at `/opt/piano-leds-controller/`
+- Sets up a Python virtual environment at `/opt/ledsplay/`
 - Configures GPIO and SPI for LED control
-- Creates a systemd service (`midi-leds.service`) that starts on boot
+- Creates a systemd service (`ledsplay.service`) that starts on boot
 - Full log at `/var/log/ledsplay-setup.log`
 
 </details>
@@ -160,8 +160,8 @@ In the web interface, go to **System > WiFi** to scan and connect to your own ne
 
 ```bash
 wget https://github.com/PabloCSScobar/ledsplay/releases/latest/download/ledsplay-armv7l.tar.gz
-sudo tar xzf ledsplay-armv7l.tar.gz -C /opt/piano-leds-controller/
-sudo systemctl enable --now midi-leds.service
+sudo tar xzf ledsplay-armv7l.tar.gz -C /opt/ledsplay/
+sudo systemctl enable --now ledsplay.service
 ```
 
 </details>
@@ -178,7 +178,7 @@ The app checks for new releases from this repository and performs safe updates w
 <summary>Manual update</summary>
 
 ```bash
-sudo /opt/piano-leds-controller/venv/bin/python3 /opt/piano-leds-controller/updater.py update
+sudo /opt/ledsplay/venv/bin/python3 /opt/ledsplay/updater.py update
 ```
 
 </details>
@@ -188,9 +188,9 @@ sudo /opt/piano-leds-controller/venv/bin/python3 /opt/piano-leds-controller/upda
 ## Service management
 
 ```bash
-sudo systemctl status midi-leds.service     # Check status
-sudo systemctl restart midi-leds.service     # Restart
-sudo journalctl -u midi-leds.service -f      # View logs
+sudo systemctl status ledsplay.service     # Check status
+sudo systemctl restart ledsplay.service     # Restart
+sudo journalctl -u ledsplay.service -f      # View logs
 ```
 
 ---

@@ -11,9 +11,9 @@
 
 set -euo pipefail
 
-readonly APP_DIR="${APP_DIR:-/opt/piano-leds-controller}"
+readonly APP_DIR="${APP_DIR:-/opt/ledsplay}"
 readonly APP_USER="${APP_USER:-pi}"
-readonly APP_GROUP="${APP_GROUP:-piano-leds}"
+readonly APP_GROUP="${APP_GROUP:-ledsplay}"
 readonly GITHUB_REPO="${GITHUB_REPO:-PabloCSScobar/ledsplay}"
 readonly RELEASES_API="https://api.github.com/repos/${GITHUB_REPO}/releases/latest"
 readonly LOG_FILE="${LOG_FILE:-/var/log/ledsplay-setup.log}"
@@ -202,7 +202,7 @@ EOF
 setup_service() {
     info "Setting up systemd service..."
 
-    cat > /etc/systemd/system/midi-leds.service <<EOF
+    cat > /etc/systemd/system/ledsplay.service <<EOF
 [Unit]
 Description=LEDsplay - Piano LED Controller
 After=network.target
@@ -227,10 +227,10 @@ WantedBy=multi-user.target
 EOF
 
     systemctl daemon-reload
-    systemctl enable midi-leds.service
+    systemctl enable ledsplay.service
 
     if [[ -f "$APP_DIR/start.py" ]]; then
-        systemctl restart midi-leds.service
+        systemctl restart ledsplay.service
         ok "Service started"
     else
         info "Service configured but not started (no start.py yet)"
@@ -249,12 +249,12 @@ print_summary() {
     echo "============================================"
     echo
     echo "  App directory:  $APP_DIR"
-    echo "  Service:        midi-leds.service"
+    echo "  Service:        ledsplay.service"
     echo "  Web interface:  http://ledsplay.local"
     echo
     echo "  Useful commands:"
-    echo "    sudo systemctl status midi-leds.service"
-    echo "    sudo journalctl -u midi-leds.service -f"
+    echo "    sudo systemctl status ledsplay.service"
+    echo "    sudo journalctl -u ledsplay.service -f"
     echo
     echo "  A reboot is required to activate SPI and audio changes:"
     echo "    sudo reboot"
