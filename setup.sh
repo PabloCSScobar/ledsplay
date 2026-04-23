@@ -237,6 +237,20 @@ EOF
     fi
 }
 
+# --- Demo cache ---
+
+generate_demo_cache() {
+    local script="$APP_DIR/generate_cache.py"
+    if [[ ! -f "$script" ]]; then
+        info "generate_cache.py not found, skipping demo cache generation"
+        return
+    fi
+
+    info "Generating MusicXML cache for bundled songs..."
+    "$APP_DIR/venv/bin/python3" "$script" 2>/dev/null && ok "Demo cache generated" || \
+        info "Cache generation failed (songs will be parsed on first play)"
+}
+
 # --- Summary ---
 
 print_summary() {
@@ -276,6 +290,7 @@ main() {
     configure_hardware
     download_latest_release
     setup_python
+    generate_demo_cache
     setup_service
     print_summary
 }
