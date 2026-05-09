@@ -35,10 +35,84 @@ LEDsplay connects your digital piano to an LED strip via MIDI on a Raspberry Pi.
 </p>
 
 <p align="center">
-  <img src="assets/rainbow.jpg" alt="LEDsplay rainbow animation" width="700">
+  <img src="assets/rainbow.jpg" alt="Rainbow LED animation" width="700">
 </p>
 
-<!-- screenshot UI na telefonie -->
+<table align="center"><tr>
+<td valign="top">
+  <img src="assets/ui/practice_mode__fullscreen_learning.png" alt="Sheet music learning mode" width="200"><br>
+  <img src="assets/ui/practice-hub.png" alt="Practice hub" width="200">
+</td>
+<td valign="top">
+  <img src="assets/ui/animations.png" alt="LED animations" width="200">
+</td>
+<td valign="top">
+  <img src="assets/ui/note_learning_1.png" alt="Note learning" width="200"><br>
+  <img src="assets/ui/games_1.png" alt="Piano games" width="200">
+</td>
+</tr></table>
+
+<details>
+<summary>More screenshots</summary>
+
+### LED visualisation
+<p>
+  <img src="assets/ui/effects.png" width="220">
+  &nbsp;
+  <img src="assets/ui/effects_background.png" width="220">
+  &nbsp;
+  <img src="assets/ui/leds_conf.png" width="220">
+</p>
+
+### Song learning & practice
+<p>
+  <img src="assets/ui/practice_mode_1.png" width="220">
+  &nbsp;
+  <img src="assets/ui/practice_mode__fullscreen_learning.png" width="220">
+  &nbsp;
+  <img src="assets/ui/practice_mode_falling_notes.png" width="220">
+</p>
+
+### Free piano
+<p>
+  <img src="assets/ui/free_piano_2.png" width="220">
+  &nbsp;
+  <img src="assets/ui/free_piano_3.png" width="220">
+  &nbsp;
+  <img src="assets/ui/free_piano_drums.png" width="220">
+</p>
+
+### Note learning & scales
+<p>
+  <img src="assets/ui/note_learning_1.png" width="220">
+  &nbsp;
+  <img src="assets/ui/note_learning_2.png" width="220">
+  &nbsp;
+  <img src="assets/ui/note_learning_3.png" width="220">
+</p>
+<p>
+  <img src="assets/ui/scales.png" width="220">
+</p>
+
+### Games
+<p>
+  <img src="assets/ui/games_1.png" width="220">
+  &nbsp;
+  <img src="assets/ui/games_2.png" width="220">
+  &nbsp;
+  <img src="assets/ui/games_3.png" width="220">
+</p>
+
+### System
+<p>
+  <img src="assets/ui/wifi_networks.png" width="220">
+  &nbsp;
+  <img src="assets/ui/updating_version_2.png" width="220">
+  &nbsp;
+  <img src="assets/ui/led_mapping.png" width="220">
+</p>
+
+</details>
 
 ---
 
