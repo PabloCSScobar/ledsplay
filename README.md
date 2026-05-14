@@ -204,36 +204,6 @@ Then plug your piano into any USB port on the Pi.
 
 <p align="center"><em>Close-up of the GPIO header with all wires connected - LED strip, two status LEDs, and the standby button.</em></p>
 
-<details>
-<summary>Wiring schematic</summary>
-
-```mermaid
-graph LR
-    subgraph Raspberry Pi
-        GPIO18[GPIO 18]
-        GPIO21[GPIO 21]
-        GPIO17[GPIO 17]
-        V5[5V]
-        GND[GND]
-        USB[USB Port]
-    end
-
-    subgraph WS2812B LED Strip
-        DIN[DIN]
-        LED5V[+5V]
-        LEDGND[GND]
-    end
-
-    Piano[Digital Piano] -->|USB MIDI| USB
-    GPIO18 -->|DATA| DIN
-    V5 -->|+5V| LED5V
-    GND -->|GND| LEDGND
-    GPIO21 -. optional .-> StatusLEDs[Status LEDs]
-    GPIO17 -. optional .-> Button[Standby button]
-```
-
-</details>
-
 **Build examples**
 
 A few different ways the DIY build can be put together:
