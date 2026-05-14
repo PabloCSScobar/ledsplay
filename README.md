@@ -16,8 +16,8 @@ LEDsplay connects your digital piano to an LED strip via MIDI on a Raspberry Pi.
 
 ## Features
 
-- 🎹 **Real-time LED visualization** - every key lights up instantly as you play *(free)*
-- 🎨 **LED animations** - Rainbow, Sparkle, Gradient, Bubble, Tetris, Police and more *(free)*
+- 🎹 **Real-time LED visualization** - every key lights up instantly as you play
+- 🎨 **LED animations** - Rainbow, Sparkle, Gradient, Bubble, Tetris, Police and more
 - 🎵 **Song learning** - follow the lights, adjust tempo, practice hands separately, loop sections
 - 🎼 **Sheet music display** - real notation in the browser with notes highlighted as you play
 - 🎯 **Scales & note training** - all major scales with LED guides, 3 difficulty levels
@@ -144,38 +144,75 @@ The free version works forever - no time limit, no account needed.
 
 | Part | Details | Est. cost |
 |------|---------|-----------|
-| Raspberry Pi | **Zero 2W** (fits the custom PCB/case) or **4B/5** (standalone setup) | $15–75 |
-| WS2812B LED strip | 144 LEDs/m, individually addressable | $8–15 |
+| Raspberry Pi | **Zero 2W** (fits the custom PCB/case) or **4B/5** (standalone setup) | $15 *(Zero 2W)* |
+| microSD card | 8 GB or larger, Class 10 / A1 recommended | $5 |
+| WS2812B LED strip | 144 LEDs/m, individually addressable (look for *"2 m in a single piece"* if you don't want to solder) | $8–15 |
 | Digital piano | Any with **USB MIDI** output (tested on Roland FP-30) | - |
 | USB cable | Piano side: usually USB-B. Pi side: micro USB (Zero 2W) or USB-A (Pi 4/5) | $3–5 |
-| Power supply | Depends on your Pi model and setup - see [Power & brightness](#power--brightness) | $5–15 |
-| Jumper wires | 3 wires: GPIO 18 (data), 5V (power), GND (ground) | $1–2 |
+| Power supply | **5 V, 3 A minimum.** micro USB for the DIY build (Pi Zero 2W) or USB-C for the custom PCB - see [Power & brightness](#power--brightness) | $5–15 |
+| Other / optional | Jumper wires to connect components to the Pi (female end for the GPIO header); heat-shrink tubing; screws **or** glue to join the case halves; double-sided tape or velcro to attach the case to the piano | $1–5 |
 
-**Estimated total (without piano): $50–110** depending on what you already have.
+**Estimated total (without piano): $40–60** with a Pi Zero 2W and components you don't already have.
 
-### Wiring
+---
 
-Connect 3 wires from the LED strip to the Raspberry Pi:
+## Build options
 
-| LED strip | Raspberry Pi |
-|-----------|-------------|
-| DIN (data) | GPIO 18 |
-| +5V | 5V |
-| GND | GND |
+LEDsplay runs the same software on any supported Pi. You can choose between two physical builds:
 
-Then connect your piano to any USB port.
+- **DIY build** - components wired straight into the GPIO header. Cheapest, little to no soldering required.
+- **Build with custom PCB and 3D case** - skips almost all of the wiring work. Design files included with the paid version.
 
-<!-- MEDIA NEEDED: Photo or color pinout diagram of the physical wiring - which pins on the GPIO header,
-     how the LED strip connector looks. Mermaid diagram below is kept as a reference but a real photo
-     is much more useful for someone with a soldering iron. -->
+Works with any digital piano that has USB MIDI output. Primary testing is done on a **Roland FP-30**.
+
+---
+
+### DIY build
+
+> **A note from me:** I'm not an electronics engineer. This is the wiring I've been running for over a year without any issues, but it may not be the most elegant or textbook-correct setup. If you have ideas for improvements, I'd love to hear them - [open an issue](https://github.com/PabloCSScobar/ledsplay/issues).
+>
+> The **custom PCB** (see the other build below) was designed by a professional hardware engineer.
+
+You can put this build together your own way - design your own enclosure or adapt a stock Pi case to fit your needs. The two status LEDs and the standby button are completely optional - the device and the app run perfectly without them.
+
+For the LED strip and status LEDs, no soldering is needed - wrap each wire around its GPIO pin and secure it with heat-shrink tubing. The standby button usually needs its wires soldered to the contacts, unless you pick a model with screw terminals or a pre-wired breakout board.
+
+<p align="center">
+  <img src="assets/setup/diy-build-overview.jpg" alt="DIY build - everything laid out" width="600">
+</p>
+
+<p align="center"><em>Everything laid out: Raspberry Pi Zero 2W, WS2812B strip, USB MIDI cable, power supply. Optional: 2 status LEDs and a standby button.</em></p>
+
+**Wiring** - which Pi pin goes where:
+
+| Component | Wire | Raspberry Pi pin |
+|-----------|------|------------------|
+| LED strip | DIN (data) | **GPIO 18** |
+| LED strip | +5V | **5V** |
+| LED strip | GND | **GND** |
+| Status LEDs *(optional)* | DIN (data) | **GPIO 21** (daisy-chained: LED #1 DOUT → LED #2 DIN) |
+| Status LEDs *(optional)* | +5V | **5V** |
+| Status LEDs *(optional)* | GND | **GND** |
+| Standby button *(optional)* | one leg | **GPIO 17** |
+| Standby button *(optional)* | other leg | **GND** |
+
+Then plug your piano into any USB port on the Pi.
+
+<p align="center">
+  <img src="assets/setup/diy-build-gpio-closeup.jpg" alt="Close-up of GPIO wiring" width="600">
+</p>
+
+<p align="center"><em>Close-up of the GPIO header with all wires connected - LED strip, two status LEDs, and the standby button.</em></p>
 
 <details>
-<summary>Wiring diagram (schematic)</summary>
+<summary>Wiring schematic</summary>
 
 ```mermaid
 graph LR
     subgraph Raspberry Pi
         GPIO18[GPIO 18]
+        GPIO21[GPIO 21]
+        GPIO17[GPIO 17]
         V5[5V]
         GND[GND]
         USB[USB Port]
@@ -191,19 +228,75 @@ graph LR
     GPIO18 -->|DATA| DIN
     V5 -->|+5V| LED5V
     GND -->|GND| LEDGND
+    GPIO21 -. optional .-> StatusLEDs[Status LEDs]
+    GPIO17 -. optional .-> Button[Standby button]
 ```
 
 </details>
 
+**Build examples**
+
+A few different ways the DIY build can be put together:
+
+<table align="center">
+<tr>
+<td valign="top" width="50%">
+  <img src="assets/setup/diy-stock-case-closed.jpg" alt="Pi Zero in a stock case with drilled holes" width="100%"><br>
+  <em>Pi Zero 2W in a generic plastic enclosure - holes drilled in the sides for the LED strip socket, USB MIDI, and power.</em>
+</td>
+<td valign="top" width="50%">
+  <img src="assets/setup/diy-stock-case-open.png" alt="Inside view of the stock case" width="100%"><br>
+  <em>Inside view of the same stock case - just the Pi, no PCB needed.</em>
+</td>
+</tr>
+<tr>
+<td valign="top" width="50%">
+  <img src="assets/setup/diy-stock-case-on-piano.png" alt="Stock case build installed on piano" width="100%"><br>
+  <em>The stock-case build mounted on the piano next to the LED strip.</em>
+</td>
+<td valign="top" width="50%">
+  <img src="assets/setup/diy-build-pi4b.jpg" alt="Raspberry Pi 4B variant" width="100%"><br>
+  <em>Raspberry Pi 4B variant with all optional extras connected: status LEDs, standby button, LED strip.</em>
+</td>
+</tr>
+</table>
+
 ---
 
-## Hardware compatibility
+### Build with custom PCB and 3D case
 
-LEDsplay includes a custom PCB design and 3D-printable case sized for the Raspberry Pi Zero 2W - the most compact and affordable setup. The software runs on any Pi with WiFi: Zero 2W, 4B, and 5 are all tested and supported.
+A custom PCB and 3D-printed case sized for the Pi Zero 2W. Skips almost all of the wiring work - the only thing you need to do is swap the LED strip's end connector for a 3-pin JST plug so it fits the PCB socket. Everything else just snaps together: Pi onto the PCB, PCB into the case, lid on top.
 
-> **PCB design and 3D case files** are available with the paid version. See [Free vs Paid](#free-vs-paid).
+> **PCB Gerber files and 3D case STLs** are included with the paid version. See [Free vs Paid](#free-vs-paid).
 
-Works with any digital piano that has USB MIDI output. Primary development and testing is done on a **Roland FP-30**.
+<p align="center">
+  <img src="assets/setup/pcb-build-exploded.jpg" alt="PCB build - exploded view" width="600">
+</p>
+
+<p align="center"><em>What's in the kit: 3D-printed case parts, custom PCB, Raspberry Pi Zero 2W.</em></p>
+
+<table align="center"><tr>
+<td valign="top">
+  <img src="assets/setup/pcb-build-assembled.jpg" alt="PCB + Pi inside the open case" width="320"><br>
+  <em>Pi snaps into the PCB, which sits inside the case.</em>
+</td>
+<td valign="top">
+  <img src="assets/setup/pcb-build-closed.jpg" alt="Closed case" width="320"><br>
+  <em>Closed case with a piano-key relief on the lid.</em>
+</td>
+</tr></table>
+
+<p align="center">
+  <img src="assets/setup/jst-connector.jpg" alt="JST 3-pin connector" width="450">
+</p>
+
+<p align="center"><em>To connect the LED strip to the custom PCB, its end has to be terminated with a 3-pin JST plug.</em></p>
+
+<p align="center">
+  <img src="assets/setup/pcb-build-on-piano-lit.jpg" alt="LEDsplay running on a Roland FP-30" width="700">
+</p>
+
+<p align="center"><em>Installed on a Roland FP-30 - LED strip running across the keys.</em></p>
 
 ---
 
@@ -216,7 +309,7 @@ There are two ways to install LEDsplay:
 ### Option 1 - Script install
 Install on any fresh Raspberry Pi OS. Works on all Pi models.
 
-**1. Flash Raspberry Pi OS Lite** onto a microSD card. You can use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or any other tool. If using Raspberry Pi Imager, open the settings (gear icon) and configure:
+**1. Flash Raspberry Pi OS Lite** onto a microSD card. You can use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or any other tool. If using Raspberry Pi Imager, open the settings and configure:
 - **Hostname:** `ledsplay` - this lets you reach the Pi at `ledsplay.local`
 - **WiFi credentials** - so the Pi connects to your network on first boot
 - **Enable SSH** - so you can log in remotely without a monitor
@@ -335,7 +428,7 @@ Color and brightness can be customised under **System > Status LEDs** in the app
 
 ## Feedback & support
 
-LEDsplay is actively developed - new features and fixes ship regularly. Found a bug or have an idea? [Open an issue](https://github.com/PabloCSScobar/ledsplay/issues) - I read everything and fix reported bugs fast.
+LEDsplay is actively developed - new features and fixes ship regularly. Found a bug or have an idea? [Open an issue](https://github.com/PabloCSScobar/ledsplay/issues) - all reports and suggestions are welcome, and I do my best to look at every one.
 
 Need support for another language? Open an issue - I'd love to add it. The app currently supports **English** and **Polish**.
 
