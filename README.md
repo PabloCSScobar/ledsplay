@@ -6,6 +6,12 @@
 
 <p align="center"><strong>Turn your piano into an interactive LED learning system.</strong></p>
 
+<p align="center">
+  <a href="https://ledsplay.lemonsqueezy.com"><strong>Get LEDsplay ($29, pay once)</strong></a> ·
+  <a href="#installation">Install on Pi</a> ·
+  <a href="#build-options">Build the hardware</a>
+</p>
+
 ![Version](https://img.shields.io/github/v/release/PabloCSScobar/ledsplay)
 ![License](https://img.shields.io/badge/license-proprietary-blue)
 ![Platform](https://img.shields.io/badge/platform-Raspberry%20Pi-c51a4a)
@@ -120,7 +126,7 @@ LEDsplay connects your digital piano to an LED strip via MIDI on a Raspberry Pi.
 
 The free version works forever - no time limit, no account needed.
 
-| | Free | Paid (one-time) |
+| | Free | Paid ($29, one-time) |
 |---|:---:|:---:|
 | Real-time key lighting | ✅ | ✅ |
 | All LED animations | ✅ | ✅ |
@@ -134,7 +140,7 @@ The free version works forever - no time limit, no account needed.
 
 **No subscription.** Pay once, own it forever. No monthly fees, no cloud dependency - LEDsplay runs entirely on your Raspberry Pi. Up to 3 devices per license.
 
-**[→ Get LEDsplay](https://ledsplay.lemonsqueezy.com)** - 14-day free trial, no credit card needed
+**[→ Get LEDsplay - $29 one-time](https://ledsplay.lemonsqueezy.com)** - 14-day free trial, no credit card needed
 
 ---
 
@@ -404,17 +410,8 @@ Need support for another language? Open an issue - I'd love to add it. The app c
 
 ---
 
-## Tech stack
-
-| Layer | Technology |
-|-------|-----------|
-| Hardware | Raspberry Pi + WS281x LED strip + MIDI USB |
-| Backend | Python, Flask, SocketIO |
-| Frontend | Angular + Ionic |
-| Communication | WebSocket + REST API |
-
----
-
 ## License
 
 LEDsplay is proprietary software. Free tier available at no cost. See [pricing](#free-vs-paid) for details.
+
+<sub>*Built with Python (Flask + SocketIO), Angular + Ionic, and rpi_ws281x.*</sub>
