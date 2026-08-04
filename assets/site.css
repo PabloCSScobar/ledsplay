@@ -321,15 +321,33 @@ section h2 {
 }
 
 .price-card li {
-    padding: 7px 0;
+    padding: 7px 0 7px 26px;
     color: var(--text-secondary);
     font-size: 0.94rem;
     border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+.price-card li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 600;
 }
 
 .price-card li:last-child { border-bottom: none; }
 
-.price-card li.no { color: var(--text-muted); }
+.price-card li.no {
+    color: var(--text-muted);
+    text-decoration: line-through;
+    text-decoration-color: var(--text-muted);
+}
+
+.price-card li.no::before {
+    content: "✕";
+    color: var(--text-muted);
+}
 
 .price-card .btn { width: 100%; }
 
