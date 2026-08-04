@@ -341,9 +341,34 @@ Download a ready-to-use system image - Raspberry Pi OS Lite with LEDsplay alread
 | **SSID** | `LEDsplay-Setup` |
 | **Password** | `ledsplay` |
 
-**5. Configure WiFi:** Open **http://ledsplay.local** in your browser. Tap the **More** icon at the bottom → go to **Network settings** → select your home WiFi network and connect. After a few seconds the `LEDsplay-Setup` hotspot will turn off and the Pi will join your network.
+**5. Configure WiFi:** Open **http://ledsplay.local** in your browser. Tap the **More** icon at the bottom → go to **WiFi Network** → select your home WiFi network and connect. After a few seconds the `LEDsplay-Setup` hotspot will turn off and the Pi will join your network.
 
 **6. Done.** Open **http://ledsplay.local** - you're in.
+
+---
+
+## Activating your license
+
+After purchasing, you'll receive a license key by email from Lemonsqueezy.
+
+**1.** Open the app at **http://ledsplay.local**, tap the **More** icon at the bottom, then go to **System > License**.
+
+**2.** Paste your license key and tap **Activate**.
+
+**3.** Done - all paid features unlock immediately, no restart needed.
+
+Each license can be active on **up to 3 devices** at once.
+
+<details>
+<summary>Transferring your license to a new device</summary>
+
+If you get a new Pi, reflash your SD card, or swap in a different Pi Zero/4/5, your license needs to be moved over manually - the activation is tied to that specific Pi's hardware ID, and reflashing wipes it.
+
+**On the old device:** open **More > System > License** and tap **Transfer to another device**. This deactivates the license on that Pi and frees up a slot.
+
+**On the new device:** activate the same license key as usual (see steps above).
+
+</details>
 
 ---
 
