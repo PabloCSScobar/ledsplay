@@ -136,6 +136,7 @@ The free version works forever - no time limit, no account needed.
 | Scale & note learning | ❌ | ✅ |
 | Piano games | ❌ | ✅ |
 | MIDI recording & playback | ❌ | ✅ |
+| PCB Gerber files & 3D case STLs | ❌ | ✅ |
 | All future features | ❌ | ✅ |
 
 **No subscription.** Pay once, own it forever. No monthly fees, no cloud dependency - LEDsplay runs entirely on your Raspberry Pi. Up to 3 devices per license.

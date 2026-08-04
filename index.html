@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LEDsplay — Turn your piano into an interactive LED learning system</title>
+<meta name="description" content="LEDsplay connects your digital piano to an LED strip via MIDI on a Raspberry Pi. Every key lights up in real time as you play. Learn songs, practice scales, play games.">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="#top">
+      <img src="assets/logo.png" alt="LEDsplay logo">
+      LEDsplay
+    </a>
+    <nav class="site-nav">
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="https://github.com/PabloCSScobar/ledsplay#installation">Install</a>
+      <a class="btn btn-primary" href="https://ledsplay.lemonsqueezy.com">Get LEDsplay — $29</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Turn your piano into an interactive LED learning system.</h1>
+      <p class="lead">
+        LEDsplay connects your digital piano to an LED strip via MIDI on a Raspberry Pi.
+        Every key lights up in real time as you play. Learn songs, practice scales, play games —
+        all controlled from a web app on your phone, tablet, or computer.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://ledsplay.lemonsqueezy.com">Get LEDsplay — $29, pay once</a>
+        <a class="btn btn-ghost" href="https://www.youtube.com/@LED-Splay" target="_blank" rel="noopener">▶ Watch it in action</a>
+      </div>
+      <ul class="hero-badges">
+        <li>🛠️ Build the hardware yourself — <a href="https://github.com/PabloCSScobar/ledsplay#what-you-need">what you need</a></li>
+        <li>🎁 14-day full trial, no card needed</li>
+        <li>💳 Pay once, no subscription</li>
+      </ul>
+      <div class="hero-media">
+        <video autoplay loop muted playsinline aria-label="LEDsplay LED strip lighting up in sync with piano keys">
+          <source src="assets/hero.webm" type="video/webm">
+          <source src="assets/hero.mp4" type="video/mp4">
+          <img src="assets/hero.gif" alt="LEDsplay LED strip lighting up in sync with piano keys">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="wrap">
+      <h2>Everything you need to learn and play</h2>
+      <p class="section-lead">One Raspberry Pi, one LED strip, and a free web app that runs on any device.</p>
+      <div class="features-grid">
+        <div class="feature-card">
+          <span class="emoji">🎹</span>
+          <h3>Real-time LED visualization</h3>
+          <p>Every key lights up instantly as you play.</p>
+        </div>
+        <div class="feature-card">
+          <span class="emoji">🎨</span>
+          <h3>LED animations</h3>
+          <p>Rainbow, Sparkle, Gradient, Bubble, Tetris, Police and more.</p>
+        </div>
+        <div class="feature-card">
+          <span class="emoji">🎵</span>
+          <h3>Song learning</h3>
+          <p>Follow the lights, adjust tempo, practice hands separately, loop sections.</p>
+        </div>
+        <div class="feature-card">
+          <span class="emoji">🎼</span>
+          <h3>Sheet music display</h3>
+          <p>Real notation in the browser with notes highlighted as you play.</p>
+        </div>
+        <div class="feature-card">
+          <span class="emoji">🎯</span>
+          <h3>Scales & note training</h3>
+          <p>All major scales with LED guides, 3 difficulty levels.</p>
+        </div>
+        <div class="feature-card">
+          <span class="emoji">🎮</span>
+          <h3>Piano games</h3>
+          <p>Reaction Game, Piano Battle (2-player), LED Keeper.</p>
+        </div>
+        <div class="feature-card">
+          <span class="emoji">📱</span>
+          <h3>Web interface</h3>
+          <p>Control everything from your phone, tablet, or any browser.</p>
+        </div>
+      </div>
+      <p class="features-note">
+        11 public domain demo songs included (Canon in D, Für Elise, Moonlight Sonata, and more).
+        Upload your own MIDI/MusicXML files with the paid version.
+      </p>
+    </div>
+  </section>
+
+  <section id="screenshots">
+    <div class="wrap">
+      <h2>See it in your hands</h2>
+      <div class="shots">
+        <img src="assets/ui/practice_mode__fullscreen_learning.png" alt="Fullscreen practice learning mode screenshot">
+        <img src="assets/ui/free_piano_1.png" alt="Free piano mode screenshot">
+        <img src="assets/ui/practice_mode_falling_notes.png" alt="Falling notes practice mode screenshot">
+        <img src="assets/ui/note_learning_1.png" alt="Note learning mode screenshot">
+        <img src="assets/ui/games_1.png" alt="Piano games screenshot">
+        <img src="assets/ui/scales.png" alt="Scales practice screenshot">
+      </div>
+      <p class="shots-cta">More on the <a href="https://www.youtube.com/@LED-Splay" target="_blank" rel="noopener">LEDsplay YouTube channel →</a></p>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="wrap">
+      <h2>Free vs Paid</h2>
+      <p class="section-lead">The free version works forever — no time limit, no account needed.</p>
+      <div class="pricing-grid">
+        <div class="price-card">
+          <h3>Free</h3>
+          <div class="price">$0</div>
+          <p class="price-sub">Software only — hardware not included</p>
+          <ul>
+            <li>Real-time key lighting</li>
+            <li>All LED animations</li>
+            <li>11 demo songs</li>
+            <li class="no">Upload your own songs</li>
+            <li class="no">Sheet music display</li>
+            <li class="no">Scale & note learning</li>
+            <li class="no">Piano games</li>
+          </ul>
+          <a class="btn btn-ghost" href="https://github.com/PabloCSScobar/ledsplay#installation">Install for free</a>
+        </div>
+        <div class="price-card paid">
+          <h3>Paid — one-time</h3>
+          <div class="price">$29</div>
+          <p class="price-sub">Software license + PCB &amp; case design files — hardware not included</p>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Upload your own songs (MIDI/MusicXML)</li>
+            <li>Sheet music display</li>
+            <li>Scale & note learning</li>
+            <li>Piano games</li>
+            <li>MIDI recording & playback</li>
+            <li>PCB Gerber files &amp; 3D case STLs</li>
+            <li>All future features</li>
+          </ul>
+          <a class="btn btn-primary" href="https://ledsplay.lemonsqueezy.com">Get LEDsplay — $29</a>
+        </div>
+      </div>
+      <p class="pricing-note">
+        <strong>No subscription. Pay once, own it forever. No monthly fees, no cloud dependency</strong> —
+        LEDsplay runs entirely on your Raspberry Pi. Up to 3 devices per license.
+        14-day free trial, no credit card needed.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© 2026 LEDsplay. All rights reserved.</span>
+    <nav>
+      <a href="https://github.com/PabloCSScobar/ledsplay" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.youtube.com/@LED-Splay" target="_blank" rel="noopener">YouTube</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund.html">Refund Policy</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
