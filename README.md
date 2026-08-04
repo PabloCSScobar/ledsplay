@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="https://ledsplay.lemonsqueezy.com"><strong>Get LEDsplay ($29, pay once)</strong></a> ·
+  <a href="https://pablocsscobar.github.io/ledsplay/">Website</a> ·
   <a href="#installation">Install on Pi</a> ·
   <a href="#build-options">Build the hardware</a>
 </p>
