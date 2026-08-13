@@ -441,4 +441,4 @@ Need support for another language? Open an issue - I'd love to add it. The app c
 
 LEDsplay is proprietary software. Free tier available at no cost. See [pricing](#free-vs-paid) for details.
 
-<sub>*Built with Python (Flask + SocketIO), Angular + Ionic, and rpi_ws281x.*</sub>
+<sub>*Built with Python (Flask + SocketIO), Angular + Ionic</sub>
