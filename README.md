@@ -7,7 +7,7 @@
 <p align="center"><strong>Turn your piano into an interactive LED learning system.</strong></p>
 
 <p align="center">
-  <a href="https://ledsplay.lemonsqueezy.com"><strong>Get LEDsplay ($29, pay once)</strong></a> ·
+  <a href="https://ledsplay.lemonsqueezy.com/checkout"><strong>Get LEDsplay ($29, pay once)</strong></a> ·
   <a href="https://pablocsscobar.github.io/ledsplay/">Website</a> ·
   <a href="#installation">Install on Pi</a> ·
   <a href="#build-options">Build the hardware</a>
@@ -142,7 +142,7 @@ The free version works forever - no time limit, no account needed.
 
 **No subscription.** Pay once, own it forever. No monthly fees, no cloud dependency - LEDsplay runs entirely on your Raspberry Pi. Up to 3 devices per license.
 
-**[→ Get LEDsplay - $29 one-time](https://ledsplay.lemonsqueezy.com)** - 14-day free trial, no credit card needed
+**[→ Get LEDsplay - $29 one-time](https://ledsplay.lemonsqueezy.com/checkout)** - 14-day free trial, no credit card needed
 
 ---
 
