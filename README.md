@@ -162,7 +162,9 @@ Not sure yet? [Install the free version](#installation) first - it includes a fu
 | Power supply | **5 V, 3 A minimum.** micro USB for the DIY build (Pi Zero 2W) or USB-C for the custom PCB - see [Power & brightness](#power--brightness) | $5–15 |
 | Other / optional | Jumper wires to connect components to the Pi (female end for the GPIO header); heat-shrink tubing; screws **or** glue to join the case halves; double-sided tape or velcro to attach the case to the piano | $1–5 |
 
-**Estimated total (without piano): $40–60** with a Pi Zero 2W and components you don't already have.
+**Estimated total (without piano): $40–60** with a Pi Zero 2W and components you don't already have, for the **DIY build** (wiring straight into the GPIO header - see [Build options](#build-options)).
+
+Going with the **custom PCB + 3D-printed case** build instead? Swap the "Other / optional" row above for ordering the assembled board and case (see [Build with custom PCB and 3D case](#build-with-custom-pcb-and-3d-case) below) - **expect roughly $90–150 total (without piano)**, most of that from the PCB assembly and 3D print themselves. Get an exact quote when you upload the design files, since part and shipping costs fluctuate.
 
 ---
 
