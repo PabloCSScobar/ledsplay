@@ -142,7 +142,9 @@ The free version works forever - no time limit, no account needed.
 
 **No subscription.** Pay once, own it forever. No monthly fees, no cloud dependency - LEDsplay runs entirely on your Raspberry Pi. Up to 3 devices per license.
 
-**[→ Get LEDsplay - $29 one-time](https://ledsplay.lemonsqueezy.com/checkout)** - 14-day free trial, no credit card needed
+**[→ Get LEDsplay - $29 one-time](https://ledsplay.lemonsqueezy.com/checkout)**
+
+Not sure yet? [Install the free version](#installation) first - it includes a full 14-day trial of every paid feature, no credit card needed, so you can try everything before deciding to buy.
 
 ---
 
