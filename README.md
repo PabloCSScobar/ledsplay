@@ -137,7 +137,7 @@ The free version works forever - no time limit, no account needed.
 | Scale & note learning | ❌ | ✅ |
 | Piano games | ❌ | ✅ |
 | MIDI recording & playback | ❌ | ✅ |
-| PCB Gerber files & 3D case STLs | ❌ | ✅ |
+| PCB Gerber files & 3D case STLs ([reference only](#build-with-custom-pcb-and-3d-case)) | ❌ | ✅ |
 | All future features | ❌ | ✅ |
 
 **No subscription.** Pay once, own it forever. No monthly fees, no cloud dependency - LEDsplay runs entirely on your Raspberry Pi. Up to 3 devices per license.
@@ -154,7 +154,7 @@ Not sure yet? [Install the free version](#installation) first - it includes a fu
 
 | Part | Details | Est. cost |
 |------|---------|-----------|
-| Raspberry Pi | **Zero 2W** (fits the custom PCB/case) or **4B/5** (standalone setup) | $15 *(Zero 2W)* |
+| Raspberry Pi | **Zero 2W** (fits the custom PCB/case) or **4B** (standalone setup) - both tested. **Pi 5** should also work but hasn't been tested yet | $15 *(Zero 2W)* |
 | microSD card | 8 GB or larger, Class 10 / A1 recommended | $5 |
 | WS2812B LED strip | 144 LEDs/m, individually addressable (look for *"2 m in a single piece"* if you don't want to solder) | $8–15 |
 | Digital piano | Any with **USB MIDI** output (tested on Roland FP-30) | - |
@@ -168,10 +168,9 @@ Not sure yet? [Install the free version](#installation) first - it includes a fu
 
 ## Build options
 
-LEDsplay runs the same software on any supported Pi. You can choose between two physical builds:
+LEDsplay runs the same software on any supported Pi. The recommended way to build it is with plain wiring straight into the GPIO header - cheap, no special parts needed, and well tested for over a year.
 
-- **DIY build** - components wired straight into the GPIO header. Cheapest, little to no soldering required.
-- **Build with custom PCB and 3D case** - skips almost all of the wiring work. Design files included with the paid version.
+A custom PCB and 3D case also exist as an alternative for a cleaner build, but ordering them from a manufacturer isn't cost-effective at low quantities - see the note below if you're curious.
 
 Works with any digital piano that has USB MIDI output. Primary testing is done on a **Roland FP-30**.
 
@@ -249,11 +248,13 @@ A custom PCB and 3D-printed case sized for the Pi Zero 2W. Skips almost all of t
 
 > **PCB Gerber files and 3D case STLs** are included with the paid version. See [Free vs Paid](#free-vs-paid).
 
+PCB Gerber files and case STLs are included mainly as a reference if you want to build your own version. Ordering a single assembled PCB from a manufacturer is not cost-effective due to fixed setup fees - DIY wiring (see above) is the simplest and cheapest way to build this.
+
 <p align="center">
   <img src="assets/setup/pcb-build-exploded.jpg" alt="PCB build - exploded view" width="600">
 </p>
 
-<p align="center"><em>What's in the kit: 3D-printed case parts, custom PCB, Raspberry Pi Zero 2W.</em></p>
+<p align="center"><em>The pieces: 3D-printed case parts, custom PCB, Raspberry Pi Zero 2W.</em></p>
 
 <table align="center"><tr>
 <td valign="top">
@@ -287,7 +288,7 @@ There are two ways to install LEDsplay:
 ---
 
 ### Option 1 - Script install
-Install on any fresh Raspberry Pi OS. Works on all Pi models.
+Install on a Raspberry Pi Zero 2W or 4B - both tested. Pi 5 hasn't been tested yet but should work (see [What you need](#what-you-need)).
 
 **1. Flash Raspberry Pi OS Lite** onto a microSD card. You can use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or any other tool. If using Raspberry Pi Imager, open the settings and configure:
 - **Hostname:** `ledsplay` - this lets you reach the Pi at `ledsplay.local`
@@ -331,6 +332,8 @@ This downloads the latest release from GitHub, installs all dependencies, and co
 ### Option 2 - Pre-built image
 
 Download a ready-to-use system image - Raspberry Pi OS Lite with LEDsplay already installed. No SSH or terminal needed.
+
+This image was built and tested on a Raspberry Pi Zero 2W. It should also work on 4B/5, but if you're on one of those and hit an issue, [Option 1 - Script install](#option-1---script-install) is the more thoroughly tested path for now.
 
 **1. Download the latest image** from the [Releases page](https://github.com/PabloCSScobar/ledsplay/releases/latest).
 
