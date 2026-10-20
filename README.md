@@ -290,8 +290,13 @@ There are two ways to install LEDsplay:
 ### Option 1 - Script install
 Install on a Raspberry Pi Zero 2W or 4B - both tested. Pi 5 hasn't been tested yet but should work (see [What you need](#what-you-need)).
 
-**1. Flash Raspberry Pi OS Lite** onto a microSD card. You can use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or any other tool. If using Raspberry Pi Imager, open the settings and configure:
+**1. Flash Raspberry Pi OS Lite (32-bit)** onto a microSD card - on every Pi model, including 4B/5. You can use [Raspberry Pi Imager](https://www.raspberrypi.com/software/) or any other tool; in Imager it's under **Raspberry Pi OS (other) → Raspberry Pi OS Lite (32-bit)**.
+
+> **Use the current 32-bit release (Debian 13 "Trixie").** LEDsplay won't start on the 64-bit OS or on the older "Legacy" (Bookworm) release.
+
+If using Raspberry Pi Imager, open the settings and configure:
 - **Hostname:** `ledsplay` - this lets you reach the Pi at `ledsplay.local`
+- **Username:** `pi`
 - **WiFi credentials** - so the Pi connects to your network on first boot
 - **Enable SSH** - so you can log in remotely without a monitor
 
