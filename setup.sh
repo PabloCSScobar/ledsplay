@@ -7,6 +7,8 @@
 #   curl -fsSL https://raw.githubusercontent.com/PabloCSScobar/ledsplay/main/setup.sh | sudo bash
 #   # or
 #   sudo ./setup.sh
+#   # a specific (pre)release, e.g. for testing before it is published as latest:
+#   curl -fsSL https://raw.githubusercontent.com/PabloCSScobar/ledsplay/main/setup.sh | sudo LEDSPLAY_VERSION=1.0.13 bash
 #
 
 set -euo pipefail
@@ -15,8 +17,14 @@ readonly APP_DIR="${APP_DIR:-/opt/ledsplay}"
 readonly APP_USER="${APP_USER:-pi}"
 readonly APP_GROUP="${APP_GROUP:-ledsplay}"
 readonly GITHUB_REPO="${GITHUB_REPO:-PabloCSScobar/ledsplay}"
-readonly RELEASES_API="https://api.github.com/repos/${GITHUB_REPO}/releases/latest"
+readonly LEDSPLAY_VERSION="${LEDSPLAY_VERSION:-}"
+if [[ -n "$LEDSPLAY_VERSION" ]]; then
+    readonly RELEASES_API="https://api.github.com/repos/${GITHUB_REPO}/releases/tags/v${LEDSPLAY_VERSION#v}"
+else
+    readonly RELEASES_API="https://api.github.com/repos/${GITHUB_REPO}/releases/latest"
+fi
 readonly LOG_FILE="${LOG_FILE:-/var/log/ledsplay-setup.log}"
+readonly PIP_CONF="${PIP_CONF:-/etc/pip.conf}"
 
 # --- Logging ---
 
@@ -167,7 +175,7 @@ setup_python() {
     local venv_dir="$APP_DIR/venv"
 
     # Configure piwheels for precompiled ARM packages
-    cat > /etc/pip.conf << 'EOF'
+    cat > "$PIP_CONF" << 'EOF'
 [global]
 extra-index-url=https://www.piwheels.org/simple
 EOF
@@ -181,17 +189,25 @@ EOF
 
     if [[ -f "$APP_DIR/requirements.txt" ]]; then
         info "Installing Python dependencies (this may take 10-20 minutes on RPi Zero)..."
-        local total
-        total=$(grep -cve '^\s*$\|^\s*#' "$APP_DIR/requirements.txt" 2>/dev/null || echo "?")
-        local count=0
-        while IFS= read -r line; do
-            # Skip empty lines and comments
-            [[ -z "$line" || "$line" =~ ^[[:space:]]*# ]] && continue
-            count=$((count + 1))
-            local pkg="${line%%[>=<]*}"
-            info "  [$count/$total] Installing $pkg..."
-            sudo -u "$APP_USER" "$venv_dir/bin/pip" install "$line" -q 2>&1 | tee -a "$LOG_FILE" || true
-        done < "$APP_DIR/requirements.txt"
+        # One pip call: the resolver installs each package once, in the version from
+        # constraints.txt (every pin has a ready wheel, so nothing is compiled on the Pi).
+        # Full pip output goes to the log; the terminal shows one line per package.
+        local args=(install --only-binary :all: --progress-bar off -r "$APP_DIR/requirements.txt")
+        [[ -f "$APP_DIR/constraints.txt" ]] && args+=(-c "$APP_DIR/constraints.txt")
+        local status_file
+        status_file=$(mktemp)
+        { sudo -u "$APP_USER" "$venv_dir/bin/pip" "${args[@]}" 2>&1 && echo 0 > "$status_file" || echo $? > "$status_file"; } \
+            | tee -a "$LOG_FILE" \
+            | grep --line-buffered -E '^(Collecting|Installing collected packages|Successfully installed|ERROR)' \
+            | sed -u 's/^/    /' || true
+        local pip_rc
+        pip_rc=$(cat "$status_file")
+        rm -f "$status_file"
+        [[ "$pip_rc" == 0 ]] || fail "Installing Python packages failed (pip exit code $pip_rc). Check the internet connection and run the script again. Details: $LOG_FILE"
+
+        info "Checking Python packages..."
+        "$venv_dir/bin/python" -c "import flask, flask_cors, flask_compress, flask_socketio, mido, music21, numpy, rtmidi, rpi_ws281x, RPi.GPIO" >> "$LOG_FILE" 2>&1 \
+            || fail "Python packages are installed but do not import. Details: $LOG_FILE"
     fi
 
     ok "Python environment ready"
@@ -240,15 +256,17 @@ EOF
 # --- Demo cache ---
 
 generate_demo_cache() {
-    local script="$APP_DIR/generate_cache.py"
-    if [[ ! -f "$script" ]]; then
-        info "generate_cache.py not found, skipping demo cache generation"
+    # Release packages ship generate_cache compiled (generate_cache.cpython-*.so), so import
+    # it as a module instead of running the .py file.
+    if ! compgen -G "$APP_DIR/generate_cache.py" > /dev/null && ! compgen -G "$APP_DIR/generate_cache.*.so" > /dev/null; then
+        info "generate_cache not found, skipping demo cache generation"
         return
     fi
 
     info "Generating MusicXML cache for bundled songs..."
-    "$APP_DIR/venv/bin/python3" "$script" 2>/dev/null && ok "Demo cache generated" || \
-        info "Cache generation failed (songs will be parsed on first play)"
+    ( cd "$APP_DIR" && "$APP_DIR/venv/bin/python3" -c "import generate_cache; generate_cache.main()" ) >> "$LOG_FILE" 2>&1 \
+        && ok "Demo cache generated" \
+        || info "Cache generation failed (songs will be parsed on first play)"
 }
 
 # --- Summary ---
@@ -295,6 +313,8 @@ main() {
     print_summary
 }
 
-trap 'fail "Script failed at line $LINENO"' ERR
-
-main "$@"
+# Tests source this file with LEDSPLAY_SETUP_NO_MAIN=1 to call single functions.
+if [[ "${LEDSPLAY_SETUP_NO_MAIN:-}" != 1 ]]; then
+    trap 'fail "Script failed at line $LINENO"' ERR
+    main "$@"
+fi
