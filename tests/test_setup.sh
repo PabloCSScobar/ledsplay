@@ -58,6 +58,8 @@ check "writes full pip output to the log" grep -q "Building wheel for zstandard"
 check "shows package progress in the terminal" grep -q "Collecting Flask==3.1.0" "$d/stdout"
 check "keeps build noise out of the terminal" bash -c "! grep -q 'Building wheel' '$d/stdout'"
 check "verifies imports after install" grep -q "import flask" "$d/python.args"
+check "checks the modules the app imports" \
+    grep -q "import flask, flask_cors, flask_compress, flask_socketio, mido, requests, rpi_ws281x, RPi.GPIO, rtmidi, werkzeug" "$d/python.args"
 check "configures piwheels" grep -q "piwheels.org/simple" "$d/pip.conf"
 
 d=$(run_case 'setup_python')
@@ -76,9 +78,8 @@ check "logs an error when imports fail" grep -q "ERROR.*import" "$d/setup.log"
 echo "install_packages"
 
 d=$(run_case 'apt-get() { echo "$*" >> "$APP_DIR/../apt.args"; }; install_packages')
-check "installs the OpenBLAS runtime numpy wheels from piwheels link against" \
-    grep -q "libopenblas0-pthread" "$d/apt.args"
 check "installs the JACK runtime python-rtmidi links against" grep -qw "libjack0" "$d/apt.args"
+check "does not install libraries for packages the app no longer uses" bash -c "! grep -q libopenblas '$d/apt.args'"
 check "installs no build toolchain (pip uses ready wheels only)" \
     bash -c "! grep -qwE 'gcc|make|build-essential|python3-dev|swig|scons|libjack-dev|git' '$d/apt.args'"
 

@@ -58,10 +58,9 @@ install_packages() {
 
     info "Installing required packages..."
     # Runtime only: pip installs ready wheels (--only-binary), so no compilers or headers.
-    # libjack0: python-rtmidi, libopenblas0-pthread: numpy; curl and jq: this script.
+    # libjack0: python-rtmidi; curl and jq: this script.
     DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
-        python3-venv curl jq \
-        libjack0 libopenblas0-pthread
+        python3-venv curl jq libjack0
     ok "Packages installed"
 }
 
@@ -206,7 +205,7 @@ EOF
         [[ "$pip_rc" == 0 ]] || fail "Installing Python packages failed (pip exit code $pip_rc). Check the internet connection and run the script again. Details: $LOG_FILE"
 
         info "Checking Python packages..."
-        "$venv_dir/bin/python" -c "import flask, flask_cors, flask_compress, flask_socketio, mido, music21, numpy, rtmidi, rpi_ws281x, RPi.GPIO" >> "$LOG_FILE" 2>&1 \
+        "$venv_dir/bin/python" -c "import flask, flask_cors, flask_compress, flask_socketio, mido, requests, rpi_ws281x, RPi.GPIO, rtmidi, werkzeug" >> "$LOG_FILE" 2>&1 \
             || fail "Python packages are installed but do not import. Details: $LOG_FILE"
     fi
 
