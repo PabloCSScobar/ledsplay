@@ -73,6 +73,12 @@ d=$(run_case 'export FAKE_PY_RC=1; setup_python')
 check "fails when imports fail" bash -c "! grep -qx 0 '$d/rc'"
 check "logs an error when imports fail" grep -q "ERROR.*import" "$d/setup.log"
 
+echo "install_packages"
+
+d=$(run_case 'apt-get() { echo "$*" >> "$APP_DIR/../apt.args"; }; install_packages')
+check "installs the OpenBLAS runtime numpy wheels from piwheels link against" \
+    grep -q "libopenblas0-pthread" "$d/apt.args"
+
 echo "generate_demo_cache"
 
 d=$(run_case 'touch "$APP_DIR/generate_cache.cpython-313-arm-linux-gnueabihf.so"; generate_demo_cache')

@@ -61,7 +61,8 @@ install_packages() {
         gcc make build-essential python3-dev \
         git scons swig python3-venv \
         libjack0 libjack-dev \
-        curl jq
+        curl jq \
+        libopenblas0-pthread
     ok "Packages installed"
 }
 
