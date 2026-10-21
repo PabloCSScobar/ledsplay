@@ -307,13 +307,15 @@ ssh pi@ledsplay.local
 # or use the IP address assigned by your router
 ```
 
+If SSH shows `REMOTE HOST IDENTIFICATION HAS CHANGED` (you flashed this card before), run `ssh-keygen -R ledsplay.local` and connect again.
+
 **3. Run the setup script:**
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/PabloCSScobar/ledsplay/main/setup.sh | sudo bash
 ```
 
-This downloads the latest release from GitHub, installs all dependencies, and configures the system. **On Raspberry Pi Zero 2W, setup takes ~15 minutes** - most of that is installing Python packages.
+This downloads the latest release from GitHub, installs all dependencies, and configures the system. **On Raspberry Pi Zero 2W, setup takes about 50 minutes** - most of that is installing Python packages.
 
 **4. Reboot** if prompted.
 
@@ -340,7 +342,7 @@ Download a ready-to-use system image - Raspberry Pi OS Lite with LEDsplay alread
 
 This image was built and tested on a Raspberry Pi Zero 2W. It should also work on 4B/5, but if you're on one of those and hit an issue, [Option 1 - Script install](#option-1---script-install) is the more thoroughly tested path for now.
 
-**1. Download the latest image** from the [Releases page](https://github.com/PabloCSScobar/ledsplay/releases/latest).
+**1. Download the latest image** from the [Releases page](https://github.com/PabloCSScobar/ledsplay/releases/latest): under **Assets**, pick the file ending in **`.img.xz`** (about 900 MB). The small `.tar.gz` file is the app update package, not a system image - Imager can't write it.
 
 **2. Flash it** using [Raspberry Pi Imager](https://www.raspberrypi.com/software/): instead of choosing a system from the list, select **"Use custom"** and pick the downloaded image file.
 
