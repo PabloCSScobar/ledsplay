@@ -1,0 +1,12 @@
+{"gymnopedie": "gymnop[eé]die.*(1|no\\.? ?1|n1)", "arabesque1": "debussy.*arabesque|arabesque.*debussy", "bwv846": "bwv ?846", "minuet_g": "minuet in g|menuet in g|bwv ?anh\\.? ?114",
+ "maple": "maple leaf", "nocturne92": "nocturne.*op\\.? ?9.*(no\\.? ?2|n2)", "swanlake": "swan lake", "bwv999": "bwv ?999",
+ "k545": "k\\.? ?545|sonata no\\.? ?16", "reverie": "r[eê]verie", "fillecheveux": "cheveux de lin", "gnossienne1": "gnossienne.*(1|n1)",
+ "traumerei": "tr[aä]umerei", "minutewaltz": "minute waltz|op\\.? ?64 no\\.? ?1", "waltz642": "op\\.? ?64 no\\.? ?2", "raindrop": "raindrop|op\\.? ?28.*15",
+ "prelude_e": "op\\.? ?28.*(no\\.? ?4)\\b|prelude in e minor", "schubert_serenade": "serenade|st[aä]ndchen", "dannyboy": "danny boy|londonderry", "amazing": "amazing grace",
+ "scarborough": "scarborough", "greensleeves": "greensleeves", "jingle": "jingle bells", "silentnight": "silent night|stille nacht",
+ "morning": "morning mood|peer gynt", "mountainking": "mountain king", "october": "october|the seasons", "brahms_lullaby": "brahms.*(lullaby|wiegenlied)|wiegenlied",
+ "hungarian5": "hungarian dance", "clementi": "clementi|sonatina.*op\\.? ?36", "invention1": "invention.*(1\\b|no\\.? ?1)|bwv ?772", "burgmuller": "burgm[uü]ller",
+ "wildrider": "wild rider|wilder reiter", "pathetique": "path[eé]tique", "moonlight1": "moonlight.*(1st|first|mvt\\.? ?1|movement 1)|sonata no\\.? ?14.*(1st|i\\.)",
+ "liebestraum": "liebestr[aä]um", "rach_prelude": "op\\.? ?3 no\\.? ?2", "pavane": "pavane", "danube": "danube", "entertainer": "entertainer",
+ "furelise_easy": "f[uü]r elise.*easy", "ode_easy": "ode to joy", "nutcracker": "sugar plum|nutcracker", "habanera": "habanera", "william_tell": "william tell",
+ "spring_vivaldi": "vivaldi.*spring|spring.*vivaldi", "aria_goldberg": "goldberg", "air_g": "air on( the)? g", "jesu": "jesu,? joy", "prelude_db": "prelude.*op\\.? ?28", "chopsticks": "chopsticks", "skaters": "skaters", "elise": "f[uü]r elise"}
