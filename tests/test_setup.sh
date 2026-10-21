@@ -78,6 +78,9 @@ echo "install_packages"
 d=$(run_case 'apt-get() { echo "$*" >> "$APP_DIR/../apt.args"; }; install_packages')
 check "installs the OpenBLAS runtime numpy wheels from piwheels link against" \
     grep -q "libopenblas0-pthread" "$d/apt.args"
+check "installs the JACK runtime python-rtmidi links against" grep -qw "libjack0" "$d/apt.args"
+check "installs no build toolchain (pip uses ready wheels only)" \
+    bash -c "! grep -qwE 'gcc|make|build-essential|python3-dev|swig|scons|libjack-dev|git' '$d/apt.args'"
 
 echo "generate_demo_cache"
 

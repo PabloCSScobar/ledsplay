@@ -57,12 +57,11 @@ install_packages() {
     apt-get update -qq
 
     info "Installing required packages..."
+    # Runtime only: pip installs ready wheels (--only-binary), so no compilers or headers.
+    # libjack0: python-rtmidi, libopenblas0-pthread: numpy; curl and jq: this script.
     DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
-        gcc make build-essential python3-dev \
-        git scons swig python3-venv \
-        libjack0 libjack-dev \
-        curl jq \
-        libopenblas0-pthread
+        python3-venv curl jq \
+        libjack0 libopenblas0-pthread
     ok "Packages installed"
 }
 
