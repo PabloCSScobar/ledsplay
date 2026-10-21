@@ -315,7 +315,7 @@ If SSH shows `REMOTE HOST IDENTIFICATION HAS CHANGED` (you flashed this card bef
 curl -fsSL https://raw.githubusercontent.com/PabloCSScobar/ledsplay/main/setup.sh | sudo bash
 ```
 
-This downloads the latest release from GitHub, installs all dependencies, and configures the system. **On Raspberry Pi Zero 2W, setup takes about 50 minutes** - most of that is installing Python packages.
+This downloads the latest release from GitHub, installs all dependencies, and configures the system. **On Raspberry Pi Zero 2W, setup takes about 5 minutes.**
 
 **4. Reboot** if prompted.
 
