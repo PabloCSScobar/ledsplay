@@ -83,6 +83,15 @@ check "does not install libraries for packages the app no longer uses" bash -c "
 check "installs no build toolchain (pip uses ready wheels only)" \
     bash -c "! grep -qwE 'gcc|make|build-essential|python3-dev|swig|scons|libjack-dev|git' '$d/apt.args'"
 
+# Fake apt-get: the first install fails like a mirror reached over broken IPv6.
+d=$(run_case 'apt-get() { echo "$*" >> "$APP_DIR/../apt.args"; [[ "$*" != *install* || "$*" == *ForceIPv4* ]]; }; install_packages')
+check "retries apt over IPv4 when the download fails" grep -q "Acquire::ForceIPv4=true.*install" "$d/apt.args"
+check "succeeds after the IPv4 retry" grep -qx 0 "$d/rc"
+
+d=$(run_case 'apt-get() { echo "$*" >> "$APP_DIR/../apt.args"; [[ "$*" != *install* ]]; }; install_packages')
+check "fails when the IPv4 retry fails too" bash -c "! grep -qx 0 '$d/rc'"
+check "logs an error when packages cannot be installed" grep -q "ERROR.*packages" "$d/setup.log"
+
 echo "generate_demo_cache"
 
 d=$(run_case 'touch "$APP_DIR/generate_cache.cpython-313-arm-linux-gnueabihf.so"; generate_demo_cache')

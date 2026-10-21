@@ -59,8 +59,14 @@ install_packages() {
     info "Installing required packages..."
     # Runtime only: pip installs ready wheels (--only-binary), so no compilers or headers.
     # libjack0: python-rtmidi; curl and jq: this script.
-    DEBIAN_FRONTEND=noninteractive apt-get install -y -qq \
-        python3-venv curl jq libjack0
+    local packages=(python3-venv curl jq libjack0)
+    if ! DEBIAN_FRONTEND=noninteractive apt-get install -y -qq "${packages[@]}"; then
+        # Some home networks advertise IPv6 without a working route to the mirrors.
+        info "Package download failed, retrying over IPv4..."
+        apt-get -o Acquire::ForceIPv4=true update -qq || true
+        DEBIAN_FRONTEND=noninteractive apt-get -o Acquire::ForceIPv4=true install -y -qq "${packages[@]}" \
+            || fail "Could not install required packages. Check the internet connection and run the script again."
+    fi
     ok "Packages installed"
 }
 
