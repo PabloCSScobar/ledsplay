@@ -187,7 +187,7 @@ EOF
     sudo -u "$APP_USER" "$venv_dir/bin/pip" install --upgrade pip -q
 
     if [[ -f "$APP_DIR/requirements.txt" ]]; then
-        info "Installing Python dependencies (about 3 minutes on Pi Zero 2W)..."
+        info "Installing Python dependencies (1-3 minutes on Pi Zero 2W)..."
         # One pip call: the resolver installs each package once, in the version from
         # constraints.txt (every pin has a ready wheel, so nothing is compiled on the Pi).
         # Full pip output goes to the log; the terminal shows one line per package.
