@@ -1,0 +1,55 @@
+# PDMX ids removed after reading the generated list (build_bulk.py skips them).
+# Student exercises signed with a composer's name
+6024781  # Satie "Peio 09.2"
+5555847  # Satie "Cati 09 2"
+6041437  # Satie "Jose Juan 09.2"
+5535090  # Satie "Puri 09 2 MSC"
+5539611  # Satie "Santi 09 2"
+5537947  # Satie "Marta 09 2"
+5538165  # Satie "Marian 09.2"
+5699895  # Satie "MSC-Ejercicio 09.2"
+5458579  # Bach "Minuet in C Minor Exercise"
+5937932  # Bach "Consecutive perfect fifths and octaves"
+4392321  # Czerny "Nach 100 Erh. No 2)"
+# Not the composer's work, or a reworking of it
+6110190  # Brahms "Happy bithday lullaby Minuet"
+5376044  # Pachelbel "We'll Bring the World His Truth"
+6054338  # Bach "Variations on a Theme & Chopin"
+3904561  # Chopin "The Bus"
+5982181  # Bach "Ellipsis"
+5577310  # Schubert "Nighthawks"
+5816849  # Beethoven "Have you heard the whisper of the breeze?"
+2448231  # Chopin "Studies on Op. 25 No. 1 version 1"
+6039870  # Bach "Air on the G String ... hersanderie"
+# Hymn tunes and vocal accompaniments (texts by later authors, not piano pieces)
+5212918  # Handel "Masculinidad"
+5577413  # Bach "Labeaga 10B"
+5866454  # Bach "Ticaem ... minueto"
+5811541  # Mozart "Folsom"
+5767108  # Handel "Birksted"
+5783160  # Handel "Portsmouth"
+5764543  # Mozart "Eternal source of every joy"
+5792937  # Mendelssohn "Awake and shout Hosanna"
+5793377  # Mendelssohn "Shine forth"
+5811984  # Mendelssohn "SEASONS"
+5803400  # Mendelssohn "How lovely are those dwellings"
+5811983  # Gounod "The King of love my Shepherd is"
+5814334  # Byrd "On Mount Olive's sacred brow"
+5937456  # Gluck "Che faro senza Euridice" accompaniment
+5547742  # Moniuszko "Trzech Budrysów" accompaniment track
+6203635  # Vivaldi "In Furore Iustissimae Irae" (vocal)
+# Incomplete, annotated or unclear scores
+60200    # Mussorgsky "Urtext" (no title)
+2715181  # Scarlatti "Scarlaltti 36" (no title)
+5925971  # Schubert "XML Swan Song Serenade..."
+2799496  # Chopin "Concerto E minor (only Part Of)"
+5916146  # Liszt "A Faust Symphony (inachieved transcription)"
+5592492  # Scriabin "Piano Sonata No. 6 (abandoned)"
+5873288  # Bach "Fuge c-Moll BWV 871 (subject and its derivations marked)"
+5833250  # Chopin "Grande Valse Brillante Op. 18 Analysis"
+5925319  # Mozart "Piano Concerto No. 21 ... 2 piano L"
+5896030  # Chopin "Sonata Op.58-3:4 part"
+4628891  # Chopin "Études No 10 Op 5" (wrong numbering)
+# Offensive historical title
+94830    # Debussy "Le petit nègre"
+5556090  # Satie "Cati 09 2" (second copy)

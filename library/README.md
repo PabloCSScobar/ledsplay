@@ -26,14 +26,33 @@ person who made the transcription (`credit`).
    "title_pl": "Gymnopédie nr 1", "composer_pl": "Erik Satie", "difficulty": 2,
    "filename": "Gymnopedie No. 1 - Satie.mxl", "url": "files/gymnopedie-no-1-satie.mxl",
    "size": 12345, "sha256": "…", "duration_s": 157, "license": "CC0",
-   "source_url": "https://musescore.com/user/…/scores/…", "credit": "… on MuseScore, via PDMX"}]}
+   "source_url": "https://musescore.com/user/…/scores/…", "credit": "… on MuseScore, via PDMX",
+   "featured": true}]}
 ```
 
-`difficulty`: 1 easy, 2 intermediate, 3 advanced. `filename` is the name the file gets on the device.
+`difficulty`: 1 easy, 2 intermediate, 3 advanced. `featured` marks the hand-picked pieces
+(shown first and under the "Featured" filter); the rest has no flag. `filename` is the name the file gets on the device.
 To add a piece, put the MXL in `files/` and add an item with its size and SHA-256.
 
 ## Rebuilding
 
-`tools/` holds the curation scripts: `find.py` searches `PDMX.csv` for candidates,
+`tools/` holds the curation scripts.
+
+Hand-picked pieces (the first 43, `featured`): `find.py` searches `PDMX.csv` for candidates,
 `picks.json` + `en_titles.json` are the hand-picked list with titles and difficulty,
 `resolve.py` maps picks to PDMX files, `build_catalog.py` copies the MXL files and writes `catalog.json`.
+
+The rest (~760 pieces) comes from three stages run over the whole PDMX dataset:
+
+1. `select_bulk.py PDMX.csv resolved.json stage1.json` keeps public-domain/CC0 solo piano scores
+   by a known public-domain composer (`composers.py`: died in 1955 or earlier), drops arrangements,
+   duets, film/game music and very short or long pieces. All copies stay; dedup comes later.
+2. `check_bulk.py` opens every file: one part, two staves, both hands play, and the LEDsplay
+   parser reads at least 100 notes.
+3. `build_bulk.py stage2.json EXTRACT resolved.json .. UPDATED reject.txt` cleans the titles
+   (`titles.py`, also the Polish ones), drops copies of the same work (`dedup.py`, the most popular
+   copy wins; the demo songs on the device count as taken), copies the files and writes `catalog.json`.
+   It lists the dropped copies in `duplicates.txt`.
+
+`reject.txt` holds PDMX ids removed after a manual look (student exercises, hymn melodies,
+accompaniments, unfinished transcriptions).
