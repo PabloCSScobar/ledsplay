@@ -29,9 +29,10 @@ LEDsplay connects your digital piano to an LED strip via MIDI on a Raspberry Pi.
 ## Features
 
 - 🎹 **Key lighting** - every key you play lights up instantly, in the colour you choose: solid, rainbow, gradient or random
-- 🌈 **Backgrounds & 17 animations** - a solid, gradient or rainbow glow under the keys, and animations such as Aurora Borealis, Fireplace, Ocean Waves, Meteor Shower and Tetris. One can start by itself when nobody is playing
+- 🌈 **Backgrounds & 17 animations** - a solid, gradient or rainbow glow under the keys, and animations such as Aurora Borealis, Fireplace, Ocean Waves, Meteor Shower and Tetris. One can start by itself when nobody is playing, and the keys you play can light up over a running animation
 - 🎵 **Song learning** - the next keys light up and the app waits until you hit them. Follow the sheet music or falling notes, practise one hand while the app plays the other, slow the tempo down, loop a few bars, or listen to the song first
-- 📚 **Song library** - about 800 songs by composer and difficulty, plus your own MIDI and MusicXML files
+- 📚 **Song library** - about 800 songs by composer and difficulty, plus your own MIDI and MusicXML files. Save any song as MIDI, MusicXML or a PDF of its score
+- 🤖 **AI assistant** - ask in your own words: it finds and plays songs, composes new pieces, makes a version in another key or style and sets the lights. Use a key for an AI provider or a local model, or connect the assistant you already pay for (such as Claude Code) over MCP, with no API costs
 - 🎼 **Note learning** - note names, staff reading, ear training, chords, intervals and sequences, with levels and stats
 - 🎯 **Scales & chords** - pick a key on the circle of fifths, see its key signature, and play or light up its scale on the strip
 - 🥁 **Free Play** - your notes fly up on the screen as you play. Pick an instrument sound, or play the drum kit, drum pads and sequencer on the screen
@@ -100,6 +101,11 @@ LEDsplay connects your digital piano to an LED strip via MIDI on a Raspberry Pi.
   <img src="assets/app/effects-animations.jpg" alt="Animations list with a live preview of each animation on the strip" width="220">
 </p>
 
+### AI assistant
+<p>
+  <img src="assets/app/ai-chat.jpg" alt="AI assistant chat: the assistant sets fireplace lights, then plays Chopin's Nocturne Op. 9 No. 2 in a player with pause, a progress bar and a Practice button" width="220">
+</p>
+
 ### Scales, Free Play & games
 <p>
   <img src="assets/app/scales.jpg" alt="Scales and chords: circle of fifths with the selected key" width="220">
@@ -139,10 +145,11 @@ The free version works forever - no time limit, no account needed.
 | Recording your playing | ❌ | ✅ |
 | Free Play: instruments, drum kit, pads, sequencer | ❌ | ✅ |
 | Piano games | ❌ | ✅ |
+| AI assistant in the app and over MCP | ❌ | ✅ |
 | PCB Gerber files & 3D case STLs, downloaded with your purchase ([reference only](#build-with-custom-pcb-and-3d-case)) | ❌ | ✅ |
 | All future features | ❌ | ✅ |
 
-**One-time payment, no subscription.** LEDsplay runs entirely on your Raspberry Pi, with no cloud. One license works on up to 3 devices.
+**One-time payment, no subscription.** LEDsplay runs entirely on your Raspberry Pi, with no cloud. The AI assistant is optional: its chat goes only to the AI service or local model you choose. One license works on up to 3 devices.
 
 **[→ Get LEDsplay - $9 one-time](https://ledsplay.lemonsqueezy.com/checkout/buy/508ee6c2-dd59-4f1b-8153-ea8859449fe7)**
 

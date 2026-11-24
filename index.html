@@ -47,7 +47,8 @@
     "Upload your own songs (MIDI / MusicXML)",
     "Note training, scales and chords",
     "Piano games",
-    "Recording and playback"
+    "Recording and playback",
+    "AI assistant that finds, plays and composes songs (also over MCP)"
   ],
   "offers": [
     {
@@ -157,6 +158,7 @@
           <button class="tab" role="tab" id="tab-library" aria-controls="panel-library" aria-selected="false" tabindex="-1">Song library <span class="tag">Pro</span></button>
           <button class="tab" role="tab" id="tab-scales" aria-controls="panel-scales" aria-selected="false" tabindex="-1">Notes &amp; scales <span class="tag">Pro</span></button>
           <button class="tab" role="tab" id="tab-games" aria-controls="panel-games" aria-selected="false" tabindex="-1">Piano games <span class="tag">Pro</span></button>
+          <button class="tab" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="false" tabindex="-1">AI assistant <span class="tag">Pro</span></button>
           <button class="tab" role="tab" id="tab-play" aria-controls="panel-play" aria-selected="false" tabindex="-1">Key lighting <span class="tag free">Free</span></button>
           <button class="tab" role="tab" id="tab-anim" aria-controls="panel-anim" aria-selected="false" tabindex="-1">LED animations <span class="tag free">Free</span></button>
         </div>
@@ -196,6 +198,15 @@
               <p><strong>Reaction Game</strong>: hit the lit keys as fast as you can, in 3 modes. <strong>LED Keeper</strong>: keep the moving lights in the zone, over 20 levels. <strong>Piano Battle</strong>: two players on one split keyboard.</p>
             </div>
             <img class="shot" src="assets/web/app-games.webp" width="480" height="1039" loading="lazy" alt="Games screen: Reaction Game with 3 modes and LED Keeper with 20 levels, each shown on a lit keyboard.">
+          </div>
+
+          <div class="panel" role="tabpanel" tabindex="0" id="panel-ai" aria-labelledby="tab-ai" data-od-id="mode-ai" hidden>
+            <div>
+              <span class="tag">Pro · free for 14 days</span>
+              <h3>Ask for a song, and the piano plays it.</h3>
+              <p>Say what you want in your own words. The assistant finds and plays songs on your piano, composes new pieces, makes a version in another key or style, and sets the lights. Use a key for an AI provider or a model on your own computer, or connect the assistant you already pay for, such as Claude Code, over MCP.</p>
+            </div>
+            <img class="shot" src="assets/web/app-ai-chat.webp" width="480" height="1039" loading="lazy" alt="AI assistant chat: asked for cosy fireplace lights and then for something calm by Chopin, the assistant sets the lights and plays Chopin's Nocturne Op. 9 No. 2 in a player with pause, a progress bar and a Practice button.">
           </div>
 
           <div class="panel" role="tabpanel" tabindex="0" id="panel-play" aria-labelledby="tab-play" data-od-id="mode-play" hidden>
@@ -407,6 +418,7 @@
             <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Piano games: Reaction Game, <span class="nw">LED Keeper</span>, Piano Battle</span></li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Free Play: instrument sounds, drums, sequencer</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>Record and play back what you play</li>
+            <li><svg aria-hidden="true"><use href="#i-check"/></svg>AI assistant: finds, plays and composes songs, and sets the lights</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>PCB and 3D case design files to download, as a reference</li>
             <li><svg aria-hidden="true"><use href="#i-check"/></svg>All future features, at no extra cost</li>
           </ul>
@@ -468,9 +480,13 @@
           <summary>How do I unlock Pro?</summary>
           <div class="answer"><p>Your license key arrives by email after you pay. In the app, open More → License, paste the key and tap Activate. Pro works right away, with no restart. One key works on up to 3 devices.</p></div>
         </details>
+        <details data-od-id="faq-ai">
+          <summary>What can the AI assistant do?</summary>
+          <div class="answer"><p>Ask it in your own words, in the app's chat. It finds and plays songs on your piano, composes new pieces, makes a version of a song in another key or style, and sets the lights. It needs Pro and an AI model: a key for an AI provider, a model running on your own computer, or an assistant you already pay for, such as Claude Code, connected over MCP at no extra API cost. It's optional, and everything else works without it.</p></div>
+        </details>
         <details data-od-id="faq-subscription">
           <summary>Is there a subscription?</summary>
-          <div class="answer"><p>No. Pro is $9, paid once, for up to 3 devices, and it includes all future features. LEDsplay runs on your Raspberry Pi, with no cloud and no account.</p></div>
+          <div class="answer"><p>No. Pro is $9, paid once, for up to 3 devices, and it includes all future features. LEDsplay runs on your Raspberry Pi, with no cloud and no account. The optional AI assistant uses an AI service or local model you choose, or the assistant you already pay for.</p></div>
         </details>
         <details data-od-id="faq-help">
           <summary>I'm stuck. Where can I get help?</summary>
